@@ -1,0 +1,18 @@
+import java.rmi.Naming;
+
+public class RMIDemoClient {
+
+	public static void main(String[] args) throws Exception{
+		// TODO Auto-generated method stub
+		if(args.length==2) {
+			String url=new String("rmi://"+args[0]+"/RMIDemo");//see rebind	
+	
+			RMIDemo rMIDemo=(RMIDemo)Naming.lookup(url);//see interface RMIDemo
+			String serverReply=rMIDemo.doCommunicate(args[1]);//we can use the name we created
+			System.out.println("Server Reply: "+serverReply);
+		}else {
+			System.err.println("Usage:RMIDemoClient<server> <name>");
+		}
+	}
+
+}
